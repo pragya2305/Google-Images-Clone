@@ -25,7 +25,7 @@ const ImagePopover = ({ image, onClose }) => {
 			return <h3>{error}</h3>;
 		} else if (isloading || !imageDetails) {
 			return (
-				<div className='loader'>
+				<div className='image-popover__loader'>
 					<Spinner
 						animation='grow'
 						variant='primary'
@@ -39,7 +39,7 @@ const ImagePopover = ({ image, onClose }) => {
 					src={imageDetails.download_url}
 					alt={imageDetails.author}
 				/>
-				<div className='image-details'>
+				<div className='image-popover__image-details'>
 					<p>
 						<strong>Author:</strong> {imageDetails.author}
 					</p>
@@ -61,15 +61,15 @@ const ImagePopover = ({ image, onClose }) => {
 
 	return (
 		<div
-			className='popover-overlay'
+			className='image-popover__overlay'
 			onClick={onClose}
 		>
 			<div
-				className='popover-content'
+				className='image-popover__content'
 				onClick={(e) => e.stopPropagation()}
 			>
 				<button
-					className='close-button'
+					className='image-popover__close-button'
 					onClick={onClose}
 				>
 					&times;

@@ -1,4 +1,4 @@
-.popover-overlay {
+.image-popover__overlay {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -11,57 +11,55 @@
 	z-index: 1000;
 }
 
-.popover-box {
-	padding: 10px;
-}
-
-.popover-content {
+.image-popover__content {
 	background: #fff;
-	padding: 35px;
+	padding: 7%;
 	border-radius: 8px;
 	position: relative;
-	max-width: 90%;
+	max-width: 70%;
 	max-height: 90%;
 	min-width: 10rem;
 	min-height: 10rem;
+	overflow-y: auto;
 }
 
-.popover-content img {
+.image-popover__content img {
 	margin-top: 10px;
-	max-width: 100%;
+	max-width: 99%;
 	height: auto;
 	border-radius: 4px;
 }
 
-.image-details {
+.image-popover__image-details {
 	text-align: left;
 	margin-top: 15px;
 }
 
-.image-details p {
+.image-popover__image-details p {
 	margin: 5px 0;
 }
 
-.image-details a {
+.image-popover__image-details a {
 	color: #4285f4;
 	text-decoration: none;
 }
 
-.image-details a:hover {
+.image-popover__image-details a:hover {
 	text-decoration: underline;
 }
 
-.close-button {
+.image-popover__close-button {
 	position: absolute;
-	top: -2px;
-	right: 7px;
+	top: -1%;
+	right: 2%;
 	border: none;
 	background: none;
-	font-size: 34px;
+	font-size: 2rem;
 	cursor: pointer;
+	padding: 2%;
 }
 
-.loader {
+.image-popover__loader {
 	width: 100%;
 	height: 7rem;
 	display: flex;

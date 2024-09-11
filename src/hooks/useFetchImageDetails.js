@@ -24,7 +24,11 @@ const useFetchImagesDetails = (imageId) => {
 		})();
 	}, [imageId]);
 
-	return { imageDetails, isloading, error };
+	return {
+		imageDetails,
+		isloading,
+		error,
+	};
 };
 
 export default useFetchImagesDetails;

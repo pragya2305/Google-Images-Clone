@@ -2,16 +2,18 @@ import React, { useState, useCallback } from 'react';
 import './App.css';
 import Spinner from 'react-bootstrap/Spinner';
 import { ImageGrid, ImagePopover } from './components';
-import { useFetchImages } from './hooks';
+import { useFetchImages, useInfinityScroll } from './hooks';
 
-function App() {
+const App = () => {
 	const [selectedImage, setSelectedImage] = useState(null);
 	const [page, setPage] = useState(0);
-	const { images, isloading, error } = useFetchImages(page);
+	const { images, isLoading, error, hasMore } = useFetchImages(page);
 
 	const loadMoreImages = useCallback(() => {
 		setPage((prevPage) => prevPage + 1);
 	}, []);
+
+	const loadMore = useInfinityScroll(isLoading, hasMore, loadMoreImages);
 
 	const openPopover = useCallback((image) => {
 		setSelectedImage(image);
@@ -22,15 +24,16 @@ function App() {
 	}, []);
 
 	return (
-		<div className='App'>
+		<div className='app'>
 			<header className='app-header'>
 				<h1>Google Images Clone</h1>
 			</header>
 			<ImageGrid
 				images={images}
 				onImageClick={openPopover}
+				loadMore={loadMore}
 			/>
-			{isloading && (
+			{isLoading && (
 				<div>
 					<Spinner
 						animation='grow'
@@ -39,12 +42,6 @@ function App() {
 				</div>
 			)}
 			{error && <h3>{error}</h3>}
-			<button
-				className='load-more-button'
-				onClick={loadMoreImages}
-			>
-				Load More
-			</button>
 			{selectedImage && (
 				<ImagePopover
 					image={selectedImage}
@@ -53,6 +50,6 @@ function App() {
 			)}
 		</div>
 	);
-}
+};
 
 export default App;

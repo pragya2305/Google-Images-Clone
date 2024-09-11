@@ -1,0 +1,19 @@
+import React from 'react';
+import './ImageItem.css';
+
+const ImageItem = ({ image, onClick }) => {
+  return (
+    <div className="image-item" onClick={onClick}>
+      <img
+        src={`https://picsum.photos/id/${image.id}/300/200`}
+        alt={image.author}
+        loading="lazy"
+      />
+      <div className="image-overlay">
+        <p>{image.author}</p>
+      </div>
+    </div>
+  );
+};
+
+export default ImageItem;

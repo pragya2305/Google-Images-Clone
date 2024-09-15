@@ -35,12 +35,6 @@
 	}
 }
 
-/* @media screen and (min-width: 1025px) and (max-width: 1600px) {
-	.image-popover__content img {
-		width: 450px;
-	}
-} */
-
 @media screen and (min-width: 2000px) and (max-width: 2499px) {
 	.image-popover__content img {
 		width: 600px;

@@ -6,6 +6,7 @@ const ImageItem = forwardRef(({ image, onClick }, ref) => {
 		<div
 			className='image-item'
 			onClick={onClick}
+			ref={ref}
 		>
 			<img
 				src={`https://picsum.photos/id/${image.id}/300/200`}

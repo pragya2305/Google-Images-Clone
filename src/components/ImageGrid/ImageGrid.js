@@ -2,9 +2,9 @@ import React from 'react';
 import './ImageGrid.css';
 import ImageItem from '../ImageItem';
 
-const ImageGrid = ({ selectedImage, images, onImageClick, loadMore }) => {
+const ImageGrid = ({ images, onImageClick, loadMore }) => {
 	return (
-		<div className={`image-grid${selectedImage ? '' : ''}`}>
+		<div className='image-grid'>
 			{images.map((image, index) => {
 				if (index === images.length - 1)
 					return (

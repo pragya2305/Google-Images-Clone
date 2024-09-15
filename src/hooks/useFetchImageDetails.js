@@ -3,12 +3,13 @@ import { useState, useEffect } from 'react';
 
 const useFetchImagesDetails = (imageId) => {
 	const [imageDetails, setImageDetails] = useState(null);
-	const [isloading, setIsLoading] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
 		(async () => {
 			setIsLoading(true);
+			setError(null);
 			try {
 				const { data } = await axios.get(
 					`https://picsum.photos/id/${imageId}/info`
@@ -26,7 +27,7 @@ const useFetchImagesDetails = (imageId) => {
 
 	return {
 		imageDetails,
-		isloading,
+		isLoading,
 		error,
 	};
 };

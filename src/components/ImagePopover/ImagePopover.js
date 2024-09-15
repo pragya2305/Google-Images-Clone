@@ -4,7 +4,7 @@ import { useFetchImagesDetails } from '../../hooks';
 import './ImagePopover.css';
 
 const ImagePopover = ({ image, onClose }) => {
-	const { imageDetails, isloading, error } = useFetchImagesDetails(image.id);
+	const { imageDetails, isLoading, error } = useFetchImagesDetails(image.id);
 
 	useEffect(() => {
 		// Close popover on Escape key press
@@ -23,7 +23,7 @@ const ImagePopover = ({ image, onClose }) => {
 	const LoadContent = () => {
 		if (error) {
 			return <h3>{error}</h3>;
-		} else if (isloading || !imageDetails) {
+		} else if (isLoading || !imageDetails) {
 			return (
 				<div className='image-popover__loader'>
 					<Spinner
@@ -61,21 +61,16 @@ const ImagePopover = ({ image, onClose }) => {
 
 	return (
 		<div
-			className='image-popover__overlay'
-			onClick={onClose}
+			className='image-popover__content'
+			onClick={(e) => e.stopPropagation()}
 		>
-			<div
-				className='image-popover__content'
-				onClick={(e) => e.stopPropagation()}
+			<button
+				className='image-popover__close-button'
+				onClick={onClose}
 			>
-				<button
-					className='image-popover__close-button'
-					onClick={onClose}
-				>
-					&times;
-				</button>
-				<LoadContent />
-			</div>
+				&times;
+			</button>
+			<LoadContent />
 		</div>
 	);
 };

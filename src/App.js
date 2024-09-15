@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import './App.css';
 import Spinner from 'react-bootstrap/Spinner';
 import { ImageGrid, ImagePopover } from './components';
@@ -28,26 +29,34 @@ const App = () => {
 			<header className='app-header'>
 				<h1>Google Images Clone</h1>
 			</header>
-			<ImageGrid
-				images={images}
-				onImageClick={openPopover}
-				loadMore={loadMore}
-			/>
-			{isLoading && (
-				<div>
-					<Spinner
-						animation='grow'
-						variant='primary'
-					/>
-				</div>
-			)}
-			{error && <h3>{error}</h3>}
-			{selectedImage && (
-				<ImagePopover
-					image={selectedImage}
-					onClose={closePopover}
+			<div className={`app-content${selectedImage ? '--shrink' : ''}`}>
+				<ImageGrid
+					selectedImage={selectedImage}
+					images={images}
+					onImageClick={openPopover}
+					loadMore={loadMore}
 				/>
-			)}
+				{isLoading && (
+					<div>
+						<Spinner
+							animation='grow'
+							variant='primary'
+						/>
+					</div>
+				)}
+				{error && <h3>{error}</h3>}
+				{createPortal(
+					<>
+						{selectedImage && (
+							<ImagePopover
+								image={selectedImage}
+								onClose={closePopover}
+							/>
+						)}
+					</>,
+					document.body
+				)}
+			</div>
 		</div>
 	);
 };

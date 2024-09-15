@@ -18,7 +18,7 @@
 	transform: scale(1.05);
 }
 
-.image-item__overlay {
+.image-overlay {
 	position: absolute;
 	bottom: 0;
 	background: rgba(0, 0, 0, 0.6);

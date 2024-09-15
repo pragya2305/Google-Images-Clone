@@ -9,6 +9,7 @@ const useFetchImages = (page) => {
 
 	useEffect(() => {
 		(async () => {
+			setError(null);
 			setIsLoading(true);
 			try {
 				const { data } = await axios(BASE_URL, { params: { page, limit: 30 } });

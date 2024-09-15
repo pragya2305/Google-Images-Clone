@@ -1,9 +1,31 @@
 .app {
 	text-align: center;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	width: 100%;
 }
 
 .app-header {
 	background-color: #4285f4;
 	padding: 20px;
 	color: white;
+	position: fixed;
+	z-index: 10;
+	width: 100%;
+}
+
+.app-content {
+	margin-top: 120px;
+}
+
+.app-content--shrink {
+	margin-top: 120px;
+	width: 70%;
+}
+
+@media screen and (min-width: 769px) and (max-width: 1440px) {
+	.app-content--shrink {
+		width: 50%;
+	}
 }

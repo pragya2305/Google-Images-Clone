@@ -14,7 +14,6 @@ const useFetchImagesDetails = (imageId) => {
 				const { data } = await axios.get(
 					`https://picsum.photos/id/${imageId}/info`
 				);
-				console.log(data, 'data');
 				setImageDetails(data);
 			} catch (error) {
 				console.error('Error fetching image details:', error);

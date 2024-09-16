@@ -4,7 +4,6 @@ const useInfinityScroll = (isLoading, hasMore, increasePageNo) => {
 	const observer = useRef();
 	const lastElement = useCallback(
 		(node) => {
-			console.log(node, isLoading);
 			if (isLoading) return;
 			if (observer.current) observer.current.disconnect();
 			observer.current = new IntersectionObserver((entries) => {
